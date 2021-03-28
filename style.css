@@ -1,0 +1,27 @@
+body {
+    margin: 0 auto;
+    background-color: black;
+    color: darksalmon;
+    font-family: 'Fredericka the Great', sans-serif;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 35vh auto;
+    font-size: 150px;
+    font-weight: 400;
+    text-align: center;
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 70px;
+    }
+}
