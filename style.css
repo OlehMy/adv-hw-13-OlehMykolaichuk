@@ -1,8 +1,12 @@
 body {
+    background: url(assets/images/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
     margin: 0 auto;
-    background-color: black;
     color: darksalmon;
-    font-family: 'Fredericka the Great', sans-serif;
+    font-family: 'Audiowide', sans-serif;
 }
 
 *,
@@ -14,14 +18,155 @@ body {
 }
 
 h1 {
-    margin: 35vh auto;
+    position: absolute;
+    width: 100%;
+    margin: 0 auto;
+    top: 35vh;
     font-size: 150px;
     font-weight: 400;
     text-align: center;
+    font-family: 'Fredericka the Great', sans-serif;
+}
+
+.buttons__wrapper,
+.articles__wrapper {
+    margin: 15vh auto 0;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.articles__wrapper {
+    margin: 5vh auto;
+}
+
+.character {
+    width: 350px;
+    height: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid darksalmon;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: rgb(179, 67, 67);
+    margin: 30px;
+    box-shadow: 0 0 5px 3px rgb(177, 179, 67);
+}
+
+.character span {
+    color: cyan;
+}
+
+.character__photo {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    /* border: 2px solid rgb(179, 67, 67); */
+    box-shadow: 0 0 6px 3px rgb(177, 179, 67);
+    border-radius: 50%;
+    -webkit-transition: border-radius .3s ease-in-out;
+    transition: border-radius .3s ease-in-out;
+}
+
+.character__photo:hover {
+    border-radius: 15px;
+}
+
+.character__data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.character p {
+    font-size: 14px;
+    padding: 10px;
+}
+
+button {
+    margin: 20px;
+    cursor: pointer;
+    font-family: 'Fredericka the Great', sans-serif;
+    font-size: 18px;
+    width: 135px;
+    height: 55px;
+    outline: none;
+    background-color: rgb(179, 67, 67);
+    border: 2px solid darksalmon;
+    border-radius: 5px;
+    -webkit-transition: background-color .2s linear, color .2s linear, box-shadow .3s ease-in-out;
+    transition: background-color .2s linear, color .2s linear, box-shadow .3s ease-in-out;
+}
+
+button:hover,
+button:disabled {
+    background-color: black;
+    color: rgb(179, 67, 67);
+    box-shadow: 0 0 10px 5px rgb(177, 179, 67);
+}
+
+.invisible {
+    display: none;
 }
 
 @media (max-width: 576px) {
     h1 {
         font-size: 70px;
     }
+    .character {
+        width: 250px;
+        height: 250px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .character__photo {
+        margin: 20px 20px 8px;
+    }
 }
+
+
+/* preloader */
+
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background: black;
+    z-index: 1001;
+}
+
+.preloader__image {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    margin-top: -35px;
+    margin-left: -35px;
+    text-align: center;
+    animation: preloader-rotate 2s infinite linear;
+}
+
+@keyframes preloader-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loaded_hiding .preloader {
+    transition: 0.3s opacity;
+    opacity: 0;
+}
+
+.loaded .preloader {
+    display: none;
+}
+
+
+/* preloader end */

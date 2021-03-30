@@ -7,15 +7,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
-    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Fredericka+the+Great&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/images/favicon.png" type="image/png">
     <title>hw-13</title>
 </head>
 
 <body>
 
+    <!-- preloader -->
+    <div class="preloader">
+        <svg class="preloader__image" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path fill="currentColor"
+            d="M304 48c0 26.51-21.49 48-48 48s-48-21.49-48-48 21.49-48 48-48 48 21.49 48 48zm-48 368c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zm208-208c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48zM96 256c0-26.51-21.49-48-48-48S0 229.49 0 256s21.49 48 48 48 48-21.49 48-48zm12.922 99.078c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.491-48-48-48zm294.156 0c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48c0-26.509-21.49-48-48-48zM108.922 60.922c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.491-48-48-48z">
+          </path>
+        </svg>
+    </div>
+    <!-- preloader end-->
+
     <h1>HW#13</h1>
 
+    <div class="buttons__wrapper">
+        <button class="get__information">Get information</button>
+        <button class="next invisible">Next</button>
+        <button class="reset invisible">Reset</button>
+    </div>
+
+    <div class="articles__wrapper invisible">
+        <!-- <article class="character">
+            <img class="character__photo" src="assets/images/sw_icon.jpg" alt="character photo">
+            <div class="character__data">
+                <p class="character__name"><b>Name:</b> Luke Skywalker</p>
+                <p class="character__birth-year"><b>Birth year:</b> 19BBY</p>
+                <p class="character__gender"><b>Gender:</b> male</p>
+            </div>
+        </article> -->
+    </div>
+
+    <audio src="assets/sounds/StarWars_OST.mp3" class="ost"></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
 
 </body>
