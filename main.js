@@ -3,6 +3,7 @@ const ost = document.querySelector('.ost');
 const buttonsWrapper = document.querySelector('.buttons__wrapper');
 const articlesWrapper = document.querySelector('.articles__wrapper');
 const getInformationBut = document.querySelector('.get__information');
+const getPlanetsBut = document.querySelector('.get__planets');
 const nextBut = document.querySelector('.next');
 const resetBut = document.querySelector('.reset');
 
@@ -32,7 +33,7 @@ getInformationBut.addEventListener('click', function() {
                         <p class="character__gender"><span>Gender:</span> ${charactersData[i].gender}</p>
                     </div>
                 </article>
-        `);
+            `);
 
         };
 
@@ -42,24 +43,79 @@ getInformationBut.addEventListener('click', function() {
     getCharacters().then(() => {
         title.classList.add('invisible');
         articlesWrapper.classList.remove('invisible');
-        nextBut.classList.remove('invisible');
+        getPlanetsBut.classList.remove('invisible');
+        resetBut.classList.remove('invisible');
+    }).catch(() => {
+        articlesWrapper.insertAdjacentHTML('beforeend', `
+        <article class="character error">
+            <img class="character__photo" src="assets/images/error.jpg" alt="error">
+            <div class="character__data">error</div>
+        </article>
+        `);
+        title.classList.add('invisible');
+        articlesWrapper.classList.remove('invisible');
         resetBut.classList.remove('invisible');
     });
 
 });
 
-nextBut.addEventListener('click', function() {
+getPlanetsBut.addEventListener('click', function() {
     ost.play();
-    nextBut.disabled = true;
+    getInformationBut.disabled = false;
+    getPlanetsBut.disabled = true;
+    nextBut.disabled = false;
+    articlesWrapper.innerHTML = '';
+
+    let planetsNames = [];
+
+    axios.get("https://swapi.dev/api/planets/")
+        .then((res) => {
+            const planetsData = res.data.results;
+            planetsNames = planetsData.map((planet) => planet.name);
+        }).then(() => {
+            articlesWrapper.insertAdjacentHTML('beforeend', `
+                <article class="planet">
+                    <img class="planet__photo" src="assets/images/planets/${(planetsNames[0]).replace(' ', '_').toLowerCase()}.jpg" alt="planet photo">                    
+                    <p class="planet__name">${planetsNames[0]}</p>
+                </article>
+            `);
+            nextBut.classList.remove('invisible');
+        }).then(() => {
+            let i = 1;
+            let n = 1;
+            nextBut.addEventListener('click', function() {
+                articlesWrapper.innerHTML = '';
+
+                articlesWrapper.insertAdjacentHTML('beforeend', `
+                    <article class="planet">
+                        <img class="planet__photo" src="assets/images/planets/${(planetsNames[i]).replace(' ', '_').toLowerCase()}.jpg" alt="planet photo">                    
+                        <p class="planet__name">${planetsNames[i]}</p>
+                    </article>
+                `);
+                n += 1;
+                if (n > (planetsNames.length - 1)) {
+                    nextBut.disabled = true;
+                    getPlanetsBut.disabled = false;
+                };
+                return i++;
+            });
+        }).catch(() => {
+            articlesWrapper.insertAdjacentHTML('beforeend', `
+            <article class="character error">
+                <img class="character__photo" src="assets/images/error.jpg" alt="error">
+                <div class="character__data">error</div>
+            </article>
+            `);
+            title.classList.add('invisible');
+            articlesWrapper.classList.remove('invisible');
+            resetBut.classList.remove('invisible');
+        });
 });
+
 
 resetBut.addEventListener('click', function() {
     document.location.reload()
 });
-
-
-
-
 
 
 /* preloader */
