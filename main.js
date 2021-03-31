@@ -14,10 +14,11 @@ getInformationBut.addEventListener('click', function() {
     async function getCharacters() {
         const filmsData = await axios.get("https://swapi.dev/api/films/2/");
         const charactersList = filmsData.data.characters;
+        console.log('charactersList:', charactersList);
         const charactersData = {};
 
         for (let i = 0; i < charactersList.length; i++) {
-            const data = await axios.get(`${charactersList[i]}`);
+            const data = await axios.get(`${(charactersList[i].replace('http', 'https'))}`);
             charactersData[i] = {
                 name: data.data.name,
                 birth_year: data.data.birth_year,
