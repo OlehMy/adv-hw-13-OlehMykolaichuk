@@ -76,7 +76,7 @@ getPlanetsBut.addEventListener('click', function() {
         }).then(() => {
             articlesWrapper.insertAdjacentHTML('beforeend', `
                 <article class="planet">
-                    <img class="planet__photo" src="assets/images/planets/${(planetsNames[0]).replace(' ', '_').toLowerCase()}.jpg" alt="planet photo">                    
+                    <img class="planet__photo" src="assets/images/planets/${(planetsNames[0]).replace(' ', '_')}.jpg" alt="planet photo">                    
                     <p class="planet__name">${planetsNames[0]}</p>
                 </article>
             `);
@@ -89,7 +89,7 @@ getPlanetsBut.addEventListener('click', function() {
 
                 articlesWrapper.insertAdjacentHTML('beforeend', `
                     <article class="planet">
-                        <img class="planet__photo" src="assets/images/planets/${(planetsNames[i]).replace(' ', '_').toLowerCase()}.jpg" alt="planet photo">                    
+                        <img class="planet__photo" src="assets/images/planets/${(planetsNames[i]).replace(' ', '_')}.jpg" alt="planet photo">                    
                         <p class="planet__name">${planetsNames[i]}</p>
                     </article>
                 `);
