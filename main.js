@@ -62,7 +62,6 @@ getInformationBut.addEventListener('click', function() {
 
 getPlanetsBut.addEventListener('click', function() {
     ost.play();
-    getInformationBut.disabled = false;
     getPlanetsBut.disabled = true;
     nextBut.disabled = false;
     articlesWrapper.innerHTML = '';
