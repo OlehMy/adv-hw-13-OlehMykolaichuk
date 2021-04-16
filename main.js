@@ -66,8 +66,7 @@ function getListOfPlanet () {
     axios.get(`https://swapi.dev/api/planets/?page=${currentPlanetPage}`)
     .then((res) => {
         const planetsData = res.data.results;
-        planetsNames = planetsData.map((planet) => planet.name);
-        console.log('planetsNames: ', planetsNames);
+        planetsNames = planetsData.map((planet) => planet.name);        
     
         for (let i = 0; i < planetsNames.length; i++) {
             infoWrapper.insertAdjacentHTML('beforeend', `
@@ -103,11 +102,11 @@ getPlanetsBut.addEventListener('click', function() {
     nextBut.classList.remove('invisible');    
 });
 
-nextBut.addEventListener('click', function() {
-    if (currentPlanetPage < 7) {
-        infoWrapper.innerHTML = '';
-        getListOfPlanet();
-    } else {
+nextBut.addEventListener('click', function() {    
+    infoWrapper.innerHTML = '';
+    getListOfPlanet();
+
+    if (currentPlanetPage > 5) {
         getPlanetsBut.disabled = false;
         nextBut.disabled = true;
     }
