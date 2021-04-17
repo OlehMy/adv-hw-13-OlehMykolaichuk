@@ -76,9 +76,6 @@ function getListOfPlanet () {
                 </div>
             `);                
         };
-        
-        currentPlanetPage++;
-        
     }).catch(() => {
         infoWrapper.insertAdjacentHTML('beforeend', `
         <div class="character error">
@@ -99,17 +96,19 @@ getPlanetsBut.addEventListener('click', function() {
     getInformationBut.disabled = false;
     infoWrapper.innerHTML = '';
     getListOfPlanet();
-    nextBut.classList.remove('invisible');    
+    nextBut.classList.remove('invisible');
 });
 
 nextBut.addEventListener('click', function() {    
     infoWrapper.innerHTML = '';
-    getListOfPlanet();
+    currentPlanetPage++;
+    getListOfPlanet();    
 
     if (currentPlanetPage > 5) {
         getPlanetsBut.disabled = false;
         nextBut.disabled = true;
-    }
+        currentPlanetPage = 1;
+    };
 });
 
 resetBut.addEventListener('click', function() {
